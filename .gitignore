@@ -1,0 +1,27 @@
+# Node modules
+node_modules/
+
+# Build output (for Next.js app inside frontend)
+frontend/.next/
+
+# Log files
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Next.js cache
+frontend/.next/cache/
+
+# Environment variables
+frontend/.env
+frontend/.env.local
+frontend/.env.development
+frontend/.env.production
+frontend/.env.test
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Next.js test coverage
+.coverage/
