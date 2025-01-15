@@ -10,6 +10,8 @@ import localFont from "next/font/local";
 import Head from "next/head";
 import "./globals.css";
 import { breakpoints, colors } from "./theme";
+import Sidebar from "@/components/layout/sidebar";
+import Navbar from "@/components/layout/navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -48,7 +50,17 @@ export default function RootLayout({
         <ColorSchemeScript />
       </Head>
       <body className="antialiased">
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}>
+          <div className="flex">
+            <Sidebar />
+            <div className="w-full">
+              <Navbar />
+              <div className="m-4">
+              {children}
+              </div>
+            </div>
+          </div>
+        </MantineProvider>
       </body>
     </html>
   );
