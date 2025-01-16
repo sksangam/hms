@@ -1,15 +1,28 @@
-"use client"
+"use client";
 
-import { forwardRef } from 'react';
-import { IconSettings,
+import { forwardRef } from "react";
+import {
+  IconSettings,
   IconSearch,
   IconPhoto,
   IconMessageCircle,
   IconTrash,
-  IconArrowsLeftRight } from '@tabler/icons-react';
-import { Group, Avatar, Text, Menu, UnstyledButton } from '@mantine/core';
+  IconArrowsLeftRight,
+  IconLogout2,
+  IconLogout,
+} from "@tabler/icons-react";
+import {
+  Group,
+  Avatar,
+  Text,
+  Menu,
+  UnstyledButton,
+  Button,
+  Anchor,
+} from "@mantine/core";
+import Link from "next/link";
 
-interface UserButtonProps extends React.ComponentPropsWithoutRef<'button'> {
+interface UserButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   image: string;
   name: string;
   email: string;
@@ -20,15 +33,15 @@ const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
     <UnstyledButton
       ref={ref}
       style={{
-        padding: 'var(--mantine-spacing-md)',
-        color: 'var(--mantine-color-text)',
-        borderRadius: 'var(--mantine-radius-sm)',
+        padding: "var(--mantine-spacing-md)",
+        color: "var(--mantine-color-text)",
+        borderRadius: "var(--mantine-radius-sm)",
       }}
       {...others}
     >
       <Group>
         <div style={{ flex: 1 }}>
-          <Text size="sm" c={'blue'} fw={500}>
+          <Text size="sm" c={"blue"} fw={500}>
             {name}
           </Text>
 
@@ -37,10 +50,10 @@ const UserButton = forwardRef<HTMLButtonElement, UserButtonProps>(
           </Text>
         </div>
 
-        <Avatar src={image} radius="xl" />
+        <Avatar src={image} radius="xl" alt="it's me" />
       </Group>
     </UnstyledButton>
-  )
+  ),
 );
 
 const NavbarProfileMenu = () => {
@@ -48,23 +61,19 @@ const NavbarProfileMenu = () => {
     <Menu withArrow>
       <Menu.Target>
         <UserButton
-          image="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png"
+          image="avatar.png"
           name="Subhash Kumar"
           email="subhash@gmail.com"
         />
       </Menu.Target>
-      
+
       <Menu.Dropdown>
         <Menu.Label>Application</Menu.Label>
-        <Menu.Item leftSection={<IconSettings size={14} />}>
-          Settings
-        </Menu.Item>
+        <Menu.Item leftSection={<IconSettings size={14} />}>Settings</Menu.Item>
         <Menu.Item leftSection={<IconMessageCircle size={14} />}>
           Messages
         </Menu.Item>
-        <Menu.Item leftSection={<IconPhoto size={14} />}>
-          Gallery
-        </Menu.Item>
+        <Menu.Item leftSection={<IconPhoto size={14} />}>Gallery</Menu.Item>
         <Menu.Item
           leftSection={<IconSearch size={14} />}
           rightSection={
@@ -79,20 +88,15 @@ const NavbarProfileMenu = () => {
         <Menu.Divider />
 
         <Menu.Label>Danger zone</Menu.Label>
-        <Menu.Item
-          leftSection={<IconArrowsLeftRight size={14} />}
-        >
+        <Menu.Item leftSection={<IconArrowsLeftRight size={14} />}>
           Transfer my data
         </Menu.Item>
-        <Menu.Item
-          color="red"
-          leftSection={<IconTrash size={14} />}
-        >
-          Delete my account
+        <Menu.Item color="red" leftSection={<IconLogout size={14} />}>
+          <Link href={"/"}>Logout</Link>
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>
   );
-}
+};
 
-export default NavbarProfileMenu
+export default NavbarProfileMenu;

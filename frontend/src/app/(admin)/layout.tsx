@@ -8,18 +8,18 @@ import {
 } from "@mantine/core";
 import localFont from "next/font/local";
 import Head from "next/head";
-import "./globals.css";
+import "../globals.css";
+import { breakpoints, colors } from "../theme";
 import Sidebar from "@/components/layout/sidebar";
 import Navbar from "@/components/layout/navbar";
-import { breakpoints, colors } from "./theme";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "../fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: "../fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
@@ -52,7 +52,9 @@ export default function RootLayout({
       <body className="antialiased">
         <MantineProvider theme={theme}>
           <div className="flex">
+            <Sidebar />
             <div className="w-full">
+              <Navbar />
               <div className="m-4">{children}</div>
             </div>
           </div>
